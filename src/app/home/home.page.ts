@@ -6,22 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-slides:any;
-
-  slideData = [{ image: "../../assets/slide-1.jpg" },
-  { image: "../../assets/slide-2.jpg" },
-  { image: "../../assets/slide-3.jpeg" }, 
-  { image: "../../assets/slide-4.jpg" }];
-  slideOpts = {
-    effect: 'flip'
-  };
-  slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    for(var i=0; i<this.slides.length;i++){
-      if(currentIndex==4){
-        return this.slides[i]+1;
-      }
-    }
-    
+slideData:any = [];
+movieList:any = [];
+  constructor(){
+    this.slideData = [{ image: "../../assets/slide-1.jpg" },
+    { image: "../../assets/slide-2.jpg" },
+    { image: "../../assets/slide-3.jpg" }, 
+    { image: "../../assets/slide-4.jpg" }];
+    this.movieList = [{ image: "../../assets/row-1.jpg", name:'Sthree', rating:'80%' },
+{ image: "../../assets/row-2.jpeg", name:'Vaayu', rating:'90%'  },
+{ image: "../../assets/row-3.jpg", name:'KGF', rating:'100%'  }, 
+{ image: "../../assets/row-4.jpg", name:'Yajamana', rating:'100%'  },
+{ image: "../../assets/row-5.jpeg", name:'Kanchana', rating:'100%'  },
+{ image: "../../assets/row-6.jpg", name:'Vayuputhra', rating:'100%'  },
+{ image: "../../assets/row-7.jpg", name:'Jindagi', rating:'100%'  }
+];
   }
+  slidesDidLoad(slides) {
+    slides.startAutoplay();
+  }
+
 }

@@ -3,16 +3,31 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title class="title">
       Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-slides (ionSlideDidChange)="slideChanged()" autoplay="1000" loop="true" speed="1000" [options]="slideOpts" pager="true">
-        <ion-slide *ngFor="let slide of slideData">
-          <img src="{{slide.image}}" />
+    <ion-slides #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)" autoplay="5000" loop="true" speed="3000" pager="true">
+        <ion-slide  *ngFor = "let banners of slideData">
+          <img src={{banners.image}}>
         </ion-slide>
-      </ion-slides>
+      </ion-slides><br/>
+<ion-label class="title2">Movies</ion-label><br/>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card *ngFor = "let list of movieList">
+              <img width="90px" height="110" src={{list.image}}>
+              <ion-label class="text">{{list.name}}</ion-label><br/>
+              <ion-item lines="none">
+                  <ion-icon color="danger" class="icon" name="heart"></ion-icon>
+                  <ion-label class="text2">{{list.rating}}</ion-label>
+              </ion-item>
+          </ion-card>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
